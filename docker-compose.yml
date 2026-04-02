@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  camera:
+    image: camera-app:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - CAMERA_RESOLUTION=1920x1080
+      - CAMERA_FPS=30
+    restart: unless-stopped
